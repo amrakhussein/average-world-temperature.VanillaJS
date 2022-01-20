@@ -30,7 +30,10 @@ module.exports = {
   module: {
     rules: [
       { test: /\.html$/, use: ['html-loader'] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
       { test: /\.(svg|png|jpeg|webp|ico)$/, type: 'asset/resource' },
       {
         test: /\.js$/,

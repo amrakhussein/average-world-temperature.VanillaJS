@@ -7,7 +7,7 @@ export function weatherData() {
   const weatherInfo = weatherDataCSV
   // console.log('csv::::', weatherInfo);
 
-  let head = weatherInfo.map((h) => h);
+  let head = weatherInfo[0];
   // console.log('head::::', head);
 
   const body = weatherInfo.slice(1).map((data) => data);
