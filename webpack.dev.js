@@ -50,7 +50,7 @@ module.exports = {
         loader: 'csv-loader',
         options: {
           dynamicTyping: true,
-          header: false,
+          header: true,
           skipEmptyLines: true,
         },
       },

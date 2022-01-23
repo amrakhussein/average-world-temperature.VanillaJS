@@ -1,35 +1,31 @@
 console.log('works');
 import * as weatherDataCSV from '../ZonAnn.Ts+dSST.csv';
 
-
-
 export function weatherData() {
-  const weatherInfo = weatherDataCSV
-  // console.log('csv::::', weatherInfo);
+  const weatherInfo = weatherDataCSV;
+  console.log('csv::::', weatherInfo);
 
-  let head = weatherInfo[0];
-  // console.log('head::::', head);
 
-  const body = weatherInfo.slice(1).map((data) => data);
-  // console.log('body::::', body);
+
+  // filter desired data out of json
+  // year, global, nhem, shem
+  const body = JSON.parse(JSON.stringify(weatherDataCSV, ['Year', 'Glob', 'NHem', 'SHem'])) 
+  console.log('body: ', body);
+
+  const head = {
+    year: 'Year',
+    global: 'Global',
+    nHem: 'Northern Hemisphere',
+    sHem: 'Southern Hemisphere',
+  };
+
+  // console.log('head::::', typeof body.Year);
 
   return {
     head,
-    body
-  }
-
+    body,
+  };
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // export function weatherData() {
 
@@ -51,7 +47,7 @@ export function weatherData() {
 //   try {
 //     // fetch and parse weather data
 //     const data =  fetch(weatherDataCSV);
-    
+
 //     // let head = data.map((h) => h[0]);
 //     // console.log('head::::', data);
 //     const res =  data.then(x => x.text())

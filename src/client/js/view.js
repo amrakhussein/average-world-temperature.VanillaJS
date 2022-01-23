@@ -1,60 +1,53 @@
 import { weatherData } from './weatherInfo';
 
-console.log('head::', weatherData().body);
 
 class Table {
   // table element
-  constructor( sortDirection) {
+  constructor(sortDirection) {
     this.table = document.getElementById('table');
-    this.sorted = true;
-    this.sortDirection = sortDirection
+    
   }
 
   spanTableHead(head = []) {
-    const tableHeader = `
-    <thead>
-      <tr>${head
-        .map(
-          (h) => `
-      <th>${h}</th>
-      `
-        )
-        .join('')}</tr>
-    </thead>
-    `;
-    this.table.insertAdjacentHTML('beforeend', tableHeader);
+    let tHead = this.table.createTHead();
+    let row = tHead.insertRow();
+
+    let headTableData = weatherData().head;
+    let headText = Object.values(headTableData);
+    headText.map((key) => {
+      let th = document.createElement('th');
+      let text = document.createTextNode(key);
+      th.appendChild(text);
+      row.appendChild(th);
+      console.log('headTableData: ', th);
+    });
   }
 
   spanTableBody(body = []) {
-    // const bodyRow = body
-    // console.log('bodyrow', bodyRow)
-    const tableBody = `
-    <tbody>
-    ${body
-      .map(
-        (row) =>
-          `
-      <tr>${row
-        .map(
-          (item) => `
-      <td>${item}</td>
-      `
-        )
-        .join('')}</tr>`
-      )
-      .join('')}
-    </tbody>
-    `;
-    this.table.insertAdjacentHTML('beforeend', tableBody);
+    let bodyTableData = weatherData().body
+    console.log('bodyTableData: ', bodyTableData);
+    bodyTableData.map(data => {
+      let row = table.insertRow()
+      Object.keys(data).map((key) => {
+        let cell = row.insertCell()
+        let text = document.createTextNode(data[key])
+        cell.appendChild(text)
+      })
+    })
+
+    
   }
+
   generateTableData() {
-    this.spanTableHead(weatherData().head);
+    const tableHead = Object.values(weatherData().head);
+    // console.log('weatherData().head::', tableHead)
+    this.spanTableHead(weatherData().tableHead);
     this.spanTableBody(weatherData().body);
+    // console.log('weatherData().body: ', weatherData().body);
   }
 
-
+  
 }
-
 
 const tabulate = new Table();
 
