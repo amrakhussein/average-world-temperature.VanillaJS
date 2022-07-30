@@ -7,25 +7,20 @@
 
     <title>Zonal annual means!</title>
   </head>
-  <body>
-    <h2>Check Average World Temperature!</h2>
-    <body>
-      <main>
-        <table id="table" class="table__sticky table__sorted"></table>
+  <body class="container">
+    <header class="my-5">
+      <h2>Check Average World Temperature!</h2>
+
+    </header>
+      <main class="">
+
+        <section>
+        <table id="table" class="table table-striped"></table>
+          <button class="btn btn-secondary" onclick="return Client.handleFetchMoreRecords()">Load More</button>
+        </section>
+          
       </main>
-    </body>
-    <!-- require JS lib -->
-    <!-- <script data-main="view.js" src="scripts/require.js"></script> -->
 
-    <!-- Papa parse for dealing with csv file -->
-    <!-- <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"
-      integrity="sha512-EbdJQSugx0nVWrtyK3JdQQ/03mS3Q1UiAhRtErbwl1YL/+e2hZdlIcSURxxh7WXHTzn83sjlh2rysACoJGfb6g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script> -->
 
-    <!-- <script type="module" src="./public/weatherInfo.js"></script>
-    <script type="module" src="./public/view.js"></script> -->
   </body>
 </html>
