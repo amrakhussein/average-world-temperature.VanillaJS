@@ -1,16 +1,16 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: {
-    main: path.resolve(__dirname, 'src/index.js'),
-  },
+  entry: path.resolve(__dirname, 'src/index.js'),
 
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    libraryTarget: 'var',
+    library: 'Client'
   },
   devtool: 'source-map',
   stats: 'verbose',
@@ -60,8 +60,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/template.html'),
-      title: 'just a demo',
+      title: 'Average World Temperature',
       filename: 'index.html',
     }),
   ],
-};
+}
