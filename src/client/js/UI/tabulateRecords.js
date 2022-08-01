@@ -1,10 +1,10 @@
-import { weatherData } from '../weatherInfo'
-
 export default class Table {
   // table element
-  constructor() {
+  constructor(head, data) {
     this.table = document.getElementById('table')
     this.limit = 10
+    this.head = head
+    this.data = data
   }
 
   spanTableHead(head = []) {
@@ -13,7 +13,7 @@ export default class Table {
 
     let row = tHead.insertRow()
 
-    let headTableData = weatherData().head
+    let headTableData = this.head
     let headText = Object.values(headTableData)
     headText.map((key) => {
       let th = document.createElement('th')
@@ -25,7 +25,7 @@ export default class Table {
   }
 
   spanTableBody(body = []) {
-    let bodyTableData = weatherData().body
+    let bodyTableData = this.data
 
     let tBody = this.table.createTBody()
     bodyTableData.map((data, idx) => {
@@ -40,14 +40,14 @@ export default class Table {
     })
   }
 
-  fetchMoreRecords() {
+  displayMoreRecords() {
     this.limit += 10
     this.spanTableBody()
   }
 
   generateTableData() {
-    this.spanTableHead(weatherData().tableHead)
-    this.spanTableBody(weatherData().body)
+    this.spanTableHead()
+    this.spanTableBody()
     //
   }
 }
